@@ -1,0 +1,174 @@
+.writing-hero {
+  min-height: 54vh;
+  display: flex;
+  align-items: center;
+}
+
+.writing-hero-copy {
+  grid-column: 1 / span 8;
+  max-width: 920px;
+}
+
+.writing-framing {
+  border-top: 1px solid var(--divider);
+}
+
+.writing-framing-copy {
+  grid-column: 1 / span 8;
+  display: grid;
+  gap: 18px;
+}
+
+.featured-essays {
+  border-top: 1px solid var(--divider);
+}
+
+.essay-list {
+  border-top: 1px solid var(--divider);
+}
+
+.essay-row {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--gutter);
+  padding-block: 34px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.essay-media {
+  grid-column: 1 / span 4;
+  margin: 0;
+}
+
+.essay-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--divider);
+  background: #f2f2f2;
+}
+
+.essay-content {
+  grid-column: 5 / span 8;
+  display: grid;
+  gap: 10px;
+}
+
+.essay-source {
+  margin: 0;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.essay-content h3 {
+  font-size: clamp(1.5rem, 2.2vw, 1.78rem);
+}
+
+.essay-summary {
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 1.62;
+}
+
+.essay-meta {
+  margin: 0;
+  color: var(--text-tertiary);
+  font-size: 0.93rem;
+}
+
+.essay-original {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.essay-actions {
+  margin-top: 2px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.notes-section {
+  border-top: 1px solid var(--divider);
+  background: var(--bg-soft);
+}
+
+.notes-list {
+  border-top: 1px solid var(--divider);
+}
+
+.notes-list li {
+  border-bottom: 1px solid var(--divider);
+}
+
+.notes-list p {
+  padding-block: 18px;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.themes-section {
+  border-top: 1px solid var(--divider);
+}
+
+.themes-copy {
+  grid-column: 1 / span 8;
+  display: grid;
+  gap: 18px;
+}
+
+.themes-list {
+  display: grid;
+  gap: 10px;
+}
+
+.themes-list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.62;
+}
+
+.themes-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cdcdcd;
+}
+
+.writing-closing {
+  border-top: 1px solid var(--divider);
+}
+
+.writing-closing-copy {
+  grid-column: 1 / span 8;
+  display: grid;
+  gap: 16px;
+}
+
+@media (max-width: 1080px) {
+  .writing-hero-copy,
+  .writing-framing-copy,
+  .essay-media,
+  .essay-content,
+  .themes-copy,
+  .writing-closing-copy {
+    grid-column: 1 / -1;
+  }
+
+  .essay-row {
+    gap: 16px;
+  }
+}

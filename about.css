@@ -1,0 +1,133 @@
+.about-hero {
+  min-height: 56vh;
+  display: flex;
+  align-items: center;
+}
+
+.about-hero-copy {
+  grid-column: 1 / span 8;
+  max-width: 900px;
+}
+
+.about-main {
+  border-top: 1px solid var(--divider);
+}
+
+.about-main-copy {
+  grid-column: 2 / span 9;
+  display: grid;
+  gap: 18px;
+}
+
+.about-care {
+  border-top: 1px solid var(--divider);
+  background: var(--bg-soft);
+}
+
+.about-care-grid {
+  grid-column: 1 / span 9;
+  display: grid;
+  gap: 18px;
+}
+
+.about-points {
+  margin-top: 4px;
+  display: grid;
+  gap: 10px;
+}
+
+.about-points li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.62;
+}
+
+.about-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cfcfcf;
+}
+
+.about-experience {
+  border-top: 1px solid var(--divider);
+}
+
+.experience-grid {
+  grid-column: 1 / span 10;
+  display: grid;
+  gap: 22px;
+}
+
+.experience-list {
+  display: grid;
+  gap: 10px;
+}
+
+.experience-list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--text-secondary);
+  font-size: 1.06rem;
+  line-height: 1.62;
+}
+
+.experience-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cccccc;
+}
+
+.about-uxbd {
+  border-top: 1px solid var(--divider);
+}
+
+.uxbd-card {
+  grid-column: 2 / span 9;
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-card);
+  background: #fcfcfb;
+  padding: 28px;
+  display: grid;
+  gap: 14px;
+}
+
+.about-personal {
+  border-top: 1px solid var(--divider);
+  background: var(--bg-soft);
+}
+
+.about-personal-copy {
+  grid-column: 1 / span 8;
+}
+
+.about-contact {
+  border-top: 1px solid var(--divider);
+}
+
+.about-contact-copy {
+  grid-column: 1 / span 8;
+}
+
+@media (max-width: 1080px) {
+  .about-hero-copy,
+  .about-main-copy,
+  .about-care-grid,
+  .experience-grid,
+  .uxbd-card,
+  .about-personal-copy,
+  .about-contact-copy {
+    grid-column: 1 / -1;
+  }
+}
