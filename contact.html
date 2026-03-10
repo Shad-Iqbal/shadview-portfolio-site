@@ -88,7 +88,26 @@
               <p class="form-intro">
                 A short note about your role, product, or opportunity is enough.
               </p>
-              <form class="contact-form-core" id="contact-page-form">
+              <form
+                class="contact-form-core"
+                id="contact-page-form"
+                action="https://formspree.io/f/xvzwkkly"
+                method="POST"
+              >
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="New portfolio inquiry from shadiqbal.com"
+                />
+                <input
+                  type="hidden"
+                  name="_next"
+                  value="https://shadiqbal.com/thank-you.html"
+                />
+                <label class="contact-form-hidden" aria-hidden="true">
+                  Leave this field empty
+                  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+                </label>
                 <label>
                   Name
                   <input type="text" name="name" autocomplete="name" required />
@@ -106,9 +125,8 @@
                   <textarea name="message" rows="5" required></textarea>
                 </label>
                 <button type="submit" class="button button-primary">Get in Touch</button>
-                <p id="contact-form-status" class="form-status" hidden>
-                  Thanks for reaching out. I&apos;ll review your message and get back
-                  to you if the opportunity is relevant.
+                <p id="contact-form-status" class="form-status" hidden aria-live="polite">
+                  Thanks for reaching out. Your message was sent successfully.
                 </p>
               </form>
             </section>
@@ -199,10 +217,59 @@
       const contactPageForm = document.getElementById("contact-page-form");
       const contactFormStatus = document.getElementById("contact-form-status");
 
-      contactPageForm?.addEventListener("submit", (event) => {
+      const contactSubmitButton = contactPageForm?.querySelector('button[type="submit"]');
+
+      contactPageForm?.addEventListener("submit", async (event) => {
         event.preventDefault();
-        contactPageForm.reset();
-        contactFormStatus.hidden = false;
+
+        if (!contactPageForm.action) return;
+
+        const formData = new FormData(contactPageForm);
+
+        if (contactFormStatus) {
+          contactFormStatus.hidden = true;
+          delete contactFormStatus.dataset.tone;
+        }
+
+        if (contactSubmitButton) {
+          contactSubmitButton.disabled = true;
+          contactSubmitButton.textContent = "Sending...";
+        }
+
+        try {
+          const response = await fetch(contactPageForm.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json",
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error("Form submission failed");
+          }
+
+          contactPageForm.reset();
+
+          if (contactFormStatus) {
+            contactFormStatus.textContent =
+              "Thanks for reaching out. I received your message and will get back to you if the opportunity is relevant.";
+            contactFormStatus.dataset.tone = "success";
+            contactFormStatus.hidden = false;
+          }
+        } catch (error) {
+          if (contactFormStatus) {
+            contactFormStatus.textContent =
+              "Your message could not be sent right now. Please email hello@shadiqbal.com directly.";
+            contactFormStatus.dataset.tone = "error";
+            contactFormStatus.hidden = false;
+          }
+        } finally {
+          if (contactSubmitButton) {
+            contactSubmitButton.disabled = false;
+            contactSubmitButton.textContent = "Get in Touch";
+          }
+        }
       });
     </script>
   </body>

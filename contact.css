@@ -106,6 +106,14 @@
   gap: 14px;
 }
 
+.contact-form-hidden {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .contact-form-core label {
   display: grid;
   gap: 8px;
@@ -117,6 +125,15 @@
   margin: 0;
   font-size: 0.94rem;
   color: #0f6d2f;
+}
+
+.form-status[data-tone="error"] {
+  color: #8a2c2c;
+}
+
+.contact-form-core .button[disabled] {
+  opacity: 0.72;
+  cursor: progress;
 }
 
 .form-status[hidden] {
